@@ -4,13 +4,14 @@ package ngalkin91.cloud.catalog.v1;
 
 option go_package = "go-genproto/catalog/currency/v1;currency";
 
+import "google/api/annotations.proto";
 import "ngalkin91/cloud/catalog/currency/v1/currency.proto";
 
 service CurrencyService {
   rpc Get(GetCurrencyRequest) returns (Currency) {
-//    option (google.api.http) = {
-//
-//    };
+    option (google.api.http) = {
+      get: "/catalog/v1/currencies/{currency_id}"
+    };
   }
 }
 
