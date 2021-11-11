@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package ngalkin91.cloud.catalog.v1;
 
-option go_package = "ngalkin91/cloud/catalog/currency/v1;currency";
+option go_package = "go-genproto/catalog/currency/v1;currency";
 
 message Currency {
   string id = 1;
