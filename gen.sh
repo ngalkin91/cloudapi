@@ -1,1 +1,1 @@
-protoc -I=./ --go_out=./ ./ngalkin91/cloud/catalog/currency/v1/*.proto
+protoc -I=./ --go_out=./ --go-grpc_out=./ ./ngalkin91/cloud/catalog/currency/v1/*.proto
