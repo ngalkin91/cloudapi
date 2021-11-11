@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package ngalkin91.cloud.catalog.v1;
+
+option go_package = "go-genproto/catalog/currency/v1;currency";
+
+import "ngalkin91/cloud/catalog/currency/v1/currency.proto";
+
+service CurrencyService {
+  rpc Get(GetCurrencyRequest) returns (Currency) {
+//    option (google.api.http) = {
+//
+//    };
+  }
+}
+
+message GetCurrencyRequest {
+  string currency_id = 1;
+}
