@@ -2,12 +2,11 @@ syntax = "proto3";
 
 package ngalkin91.cloud.catalog.v1;
 
-option go_package = "go-genproto/catalog/currency/v1";
+option go_package = "go-genproto/catalog/price/v1";
 
 import "google/protobuf/timestamp.proto";
 
-message Currency {
-  // ISO code
+message Type {
   string id = 1;
 
   string title = 2;
@@ -15,6 +14,4 @@ message Currency {
   google.protobuf.Timestamp created_at = 3;
 
   google.protobuf.Timestamp updated_at = 4;
-
-  bool is_base = 5;
 }
