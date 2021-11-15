@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package ngalkin91.cloud.catalog.currency.v1;
+
+option go_package = "go-genproto/catalog/currency/v1";
+
+import "google/protobuf/timestamp.proto";
+
+message Currency {
+  string id = 1;
+
+  string iso_code = 2;
+
+  string title = 3;
+
+  bool is_base = 4;
+
+  google.protobuf.Timestamp created_at = 5;
+
+  google.protobuf.Timestamp updated_at = 6;
+}

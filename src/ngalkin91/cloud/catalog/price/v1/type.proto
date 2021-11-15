@@ -1,18 +1,17 @@
 syntax = "proto3";
 
-package ngalkin91.cloud.catalog.v1;
+package ngalkin91.cloud.catalog.price.v1;
 
 option go_package = "go-genproto/catalog/price/v1";
 
 import "google/protobuf/timestamp.proto";
-import "ngalkin91/cloud/catalog/price/v1/money.proto";
 
-message Price {
-  string product_id = 1;
+message Type {
+  string id = 1;
 
-  string type_id = 2;
+  string external_id = 2;
 
-  Money price = 3;
+  string title = 3;
 
   google.protobuf.Timestamp created_at = 4;
 

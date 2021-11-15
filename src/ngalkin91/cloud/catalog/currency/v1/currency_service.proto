@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package ngalkin91.cloud.catalog.currency.v1;
+
+option go_package = "go-genproto/catalog/currency/v1";
+
+import "google/api/annotations.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/empty.proto";
+import "ngalkin91/cloud/catalog/currency/v1/currency.proto";
+
+service CurrencyService {
+  rpc List(ListCurrenciesRequest) returns (ListCurrenciesResponse) {
+    option (google.api.http) = {
+      get: "/catalog/currency/v1/currencies"
+    };
+  }
+
+  rpc Get(GetCurrencyRequest) returns (Currency) {
+    option (google.api.http) = {
+      get: "/catalog/currency/v1/currencies/{currency_id}"
+    };
+  }
+
+  rpc CreateCurrency(CreateCurrencyRequest) returns (Currency) {
+    option (google.api.http) = {
+      post: "/catalog/currency/v1/currencies",
+      body: "currency"
+    };
+  }
+
+  rpc UpdateCurrency(UpdateCurrencyRequest) returns (Currency) {
+    option (google.api.http) = {
+      patch: "/catalog/price/v1/currencies/{currency_id}",
+      body: "currency"
+    };
+  }
+
+  rpc DeleteCurrency(DeleteCurrencyRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete: "/catalog/price/v1/currencies/{currency_id}"
+    };
+  }
+}
+
+message ListCurrenciesRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListCurrenciesResponse {
+  repeated Currency currencies = 1;
+  string next_page_token = 2;
+}
+
+message GetCurrencyRequest {
+  string currency_id = 1;
+}
+
+message CreateCurrencyRequest {
+  Currency currency = 1;
+}
+
+message UpdateCurrencyRequest {
+  Currency currency = 1;
+  google.protobuf.FieldMask update_mask = 2;
+}
+
+message DeleteCurrencyRequest {
+  string currency_id = 1;
+}

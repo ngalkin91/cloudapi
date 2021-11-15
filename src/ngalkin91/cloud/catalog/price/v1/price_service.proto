@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package ngalkin91.cloud.catalog.price.v1;
+
+option go_package = "go-genproto/catalog/price/v1";
+
+import "google/api/annotations.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/empty.proto";
+import "ngalkin91/cloud/catalog/price/v1/price.proto";
+
+// TODO: add batch methods?
+// TODO: add validation
+service PriceService {
+  rpc Get(GetPriceRequest) returns (Price) {
+    option (google.api.http) = {
+      get: "/catalog/price/v1/prices/{price_id}"
+    };
+  }
+
+  rpc List(ListPricesRequest) returns (ListPricesResponse) {
+    option (google.api.http) = {
+      get: "/catalog/price/v1/prices"
+    };
+  }
+
+  rpc CreatePrice(CreatePriceRequest) returns (Price) {
+    option (google.api.http) = {
+      post: "/catalog/price/v1/prices",
+      body: "price"
+    };
+  }
+
+  rpc UpdateType(UpdatePriceRequest) returns (Price) {
+    option (google.api.http) = {
+      patch: "/catalog/price/v1/prices/{price_id}",
+      body: "price"
+    };
+  }
+
+  rpc DeletePrice(DeletePriceRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete: "/catalog/price/v1/prices/{price_id}"
+    };
+  }
+}
+
+message GetPriceRequest {
+  string price_id = 1;
+}
+
+message ListPricesRequest {
+  string product_id = 1; // todo: optional
+  string type_id = 2; // todo: optional
+  string currency_id = 3; // todo: optional
+
+  int32 page_size = 4;
+  string page_token = 5;
+}
+
+message ListPricesResponse {
+  repeated Price prices = 1;
+  string next_page_token = 2;
+}
+
+message CreatePriceRequest {
+  Price price = 1;
+}
+
+message UpdatePriceRequest {
+  Price price = 1;
+  google.protobuf.FieldMask update_mask = 2;
+}
+
+message DeletePriceRequest {
+  string price_id = 1;
+}

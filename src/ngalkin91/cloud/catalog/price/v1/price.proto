@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package ngalkin91.cloud.catalog.price.v1;
+
+option go_package = "go-genproto/catalog/price/v1";
+
+import "google/type/decimal.proto";
+import "google/protobuf/timestamp.proto";
+
+message Price {
+  string id = 1;
+
+  string product_id = 2;
+
+  string type_id = 3;
+
+  string currency_id = 4;
+
+  google.type.Decimal price = 5;
+
+  google.type.Decimal old_price = 6;
+
+  google.protobuf.Timestamp created_at = 7;
+
+  google.protobuf.Timestamp updated_at = 8;
+}
